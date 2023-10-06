@@ -24,7 +24,7 @@ class App {
 
     public static String toString(Map<String, Integer> words) {
         Collection<String> collection = words.keySet();
-        if (collection.isEmpty()) {
+        if (words.containsKey("") | words.isEmpty()) {
             return "{}";
         }
         StringBuilder result = new StringBuilder("{");
