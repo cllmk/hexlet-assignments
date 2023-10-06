@@ -11,12 +11,12 @@ class App {
         String[] sentenceArray = sentence.split(" ");
         Map<String, Integer> wordsCount = new HashMap<String, Integer>(sentenceArray.length, 0.99f);
         int count;
-        for (int i = 0; i < sentenceArray.length; i++) {
-            if (wordsCount.containsKey(sentenceArray[i])) {
-                count = wordsCount.get(sentenceArray[i]) + 1;
-                wordsCount.put(sentenceArray[i], count);
+        for (String s : sentenceArray) {
+            if (wordsCount.containsKey(s)) {
+                count = wordsCount.get(s) + 1;
+                wordsCount.put(s, count);
             } else {
-                wordsCount.put(sentenceArray[i], 1);
+                wordsCount.put(s, 1);
             }
         }
         return wordsCount;
@@ -24,12 +24,15 @@ class App {
 
     public static String toString(Map<String, Integer> words) {
         Collection<String> collection = words.keySet();
-        String result = "{\n";
-        for (String key : collection) {
-            result = result + "  " + key + ": " + words.get(key) + "\n";
+        if (collection.isEmpty()) {
+            return "{}";
         }
-        result = result + "}";
-        return result;
+        StringBuilder result = new StringBuilder("{");
+        for (String key : collection) {
+            result.append("\n").append("  ").append(key).append(": ").append(words.get(key));
+        }
+        result.append("\n}");
+        return result.toString();
     }
 }
 //END
