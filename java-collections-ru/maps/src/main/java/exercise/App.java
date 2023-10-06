@@ -1,6 +1,8 @@
 package exercise;
 
-import java.util.*;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.Collection;
 
 // BEGIN
 class App {
@@ -20,10 +22,10 @@ class App {
         return wordsCount;
     }
 
-    public static String toString(Map <String, Integer> words) {
-        Collection<String> collection= words.keySet();
+    public static String toString(Map<String, Integer> words) {
+        Collection<String> collection = words.keySet();
         String result = "{\n";
-        for (String key : collection){
+        for (String key : collection) {
             result = result + "  " + key + ": " + words.get(key) + "\n";
         }
         result = result + "}";
