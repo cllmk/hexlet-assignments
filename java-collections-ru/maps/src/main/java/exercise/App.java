@@ -8,8 +8,11 @@ import java.util.Collection;
 class App {
 
     public static Map<String, Integer> getWordCount(String sentence) {
-        String[] sentenceArray = sentence.split(" ");
+        String[] sentenceArray = sentence.trim().split(" ");
         Map<String, Integer> wordsCount = new HashMap<>();
+        if (sentence.isEmpty()) {
+            return wordsCount;
+        }
         int count;
         for (String s : sentenceArray) {
             if (wordsCount.containsKey(s)) {
